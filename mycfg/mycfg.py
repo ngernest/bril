@@ -79,7 +79,16 @@ def mycfg():
             print('  ', block)
 
         cfg = get_cfg(name2block)
-        print(cfg)
+        
+        # Produce GraphViz visualization
+        print('digraph {} {{'.format(func['name']))
+        for name in name2block:
+            print('  {};'.format(name))
+        for name, succs in cfg.items():
+            for succ in succs:
+                print('  {} -> {};'.format(name, succ))
+        print('}')
+
 
 if __name__ == '__main__':
     mycfg()    
