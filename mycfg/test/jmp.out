@@ -1,0 +1,21 @@
+b0
+   [{'dest': 'v', 'op': 'const', 'type': 'int', 'value': 4}, {'labels': ['somewhere'], 'op': 'jmp'}]
+b1
+   [{'dest': 'v', 'op': 'const', 'type': 'int', 'value': 2}]
+somewhere
+   [{'args': ['v'], 'op': 'print'}]
+digraph main {
+  b0;
+  b1;
+  somewhere;
+  b0 -> somewhere;
+  b1 -> s;
+  b1 -> o;
+  b1 -> m;
+  b1 -> e;
+  b1 -> w;
+  b1 -> h;
+  b1 -> e;
+  b1 -> r;
+  b1 -> e;
+}

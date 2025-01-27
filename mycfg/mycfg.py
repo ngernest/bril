@@ -20,12 +20,16 @@ def form_blocks(body):
                cur_block = [] 
                
         else:   # A label 
-            yield cur_block 
+
+            # Only yield blocks that contain non-zero no. of instructions
+            if cur_block:
+                yield cur_block 
 
             # Put the label in the next basic block
             cur_block = [instr]
     
-    yield cur_block
+    if cur_block:
+        yield cur_block
 
 def block_map(blocks):
     """Creates labels for a list of blocks 
