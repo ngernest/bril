@@ -4,6 +4,7 @@ from collections import OrderedDict
 
 TERMINATORS = ('jmp', 'br', 'ret')
 
+# List[Instr] -> List[List[Instr]]
 def form_blocks(body):
     """Forms a basic block containing the instructions in `body`
     """
