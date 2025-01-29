@@ -35,6 +35,7 @@ def form_blocks(body):
     
     return blocks
 
+# List[Block] -> Dict[String, Block]
 def block_map(blocks):
     """Creates labels for a list of blocks 
     (generating fresh labels when necessary)
@@ -70,7 +71,7 @@ def get_cfg(name2block):
                 succ = []
             else:
                 # We fall through to the next block in `name2block`
-                succ = list(name2block.keys())[i + 1]
+                succ = [list(name2block.keys())[i + 1]]
 
         out[name] = succ
     return out 
