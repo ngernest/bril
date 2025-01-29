@@ -8,6 +8,7 @@ def form_blocks(body):
     """Forms a basic block containing the instructions in `body`
     """
 
+    blocks = []
     cur_block = []
 
     for instr in body:
@@ -16,20 +17,22 @@ def form_blocks(body):
 
             # Check for terminator (yield the current block to the client)
             if instr['op'] in TERMINATORS:
-               yield cur_block 
+               blocks.append(cur_block)
                cur_block = [] 
                
         else:   # A label 
 
             # Only yield blocks that contain non-zero no. of instructions
             if cur_block:
-                yield cur_block 
+                blocks.append(cur_block)
 
             # Put the label in the next basic block
             cur_block = [instr]
     
     if cur_block:
-        yield cur_block
+        blocks.append(cur_block)
+    
+    return blocks
 
 def block_map(blocks):
     """Creates labels for a list of blocks 
